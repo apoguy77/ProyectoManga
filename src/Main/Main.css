@@ -42,28 +42,35 @@ h1 {
 
 .descripcion {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column; /* Alinea el texto y la descripción verticalmente */
+    align-items: flex-start;
     text-align: left;
     margin-top: 20px;
     margin-bottom: 20px;
-  }
-  
-  .descripcion img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .descripcion p {
-    margin-left: 20px; /* Espacio entre la imagen y la descripción */
-    max-width: 50%; /* Ajusta el ancho máximo según tu preferencia */
-    color: #fff;
-    font-size: 1rem; /* Ajusta el tamaño de fuente según tu preferencia */
-  }
-  
-  /* Estilo para las imágenes dentro de la descripción */
-  .descripcion img {
-    max-width: 100%; /* Las imágenes se ajustarán automáticamente al ancho del contenedor */
-    height: auto; /* Mantendrá la proporción de aspecto original de las imágenes */
-  }
-  
+}
+
+.descripcion p {
+    color: #0a0909;
+    font-size: 1rem;
+}
+.legend {
+    font-size: 5rem;
+}
+.main {
+    /* ... otros estilos ... */
+    display: flex;
+    flex-direction: column; /* Cambiar a 'column' si quieres apilarlos verticalmente */
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: space-between; /* Para que los carruseles se muestren uno al lado del otro */
+    max-width: 900px; /* Ajustar el ancho máximo según tu diseño */
+    margin-top: 40px; /* Espacio entre los carruseles */
+}
+.carousel-separator {
+    width: 150px; /* Ancho del espacio separador entre carruseles */
+}
