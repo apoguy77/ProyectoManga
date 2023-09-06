@@ -14,7 +14,6 @@
     text-align: center;
 }
 
-
 h1 {
     font-size: 3rem;
     color: #fff;
@@ -25,12 +24,47 @@ h1 {
 
 
 .main .carousel {
-    max-width: 350px; /* Ajusta el ancho máximo según tu preferencia */
+    max-width: 400px; /* Ajusta el ancho máximo según tu preferencia */
     margin: 0 auto; /* Centra el carrusel horizontalmente en la pantalla */
 }
 
-/* Estilo para las imágenes dentro del carrusel */
 .main .carousel img {
     max-width: 100%; /* Las imágenes se ajustarán automáticamente al ancho del contenedor */
     height: auto; /* Mantendrá la proporción de aspecto original de las imágenes */
 }
+.container-carrussel{
+    display: flex;
+}
+
+.descripcion {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .descripcion img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .descripcion p {
+    margin-left: 20px; /* Espacio entre la imagen y la descripción */
+    max-width: 50%; /* Ajusta el ancho máximo según tu preferencia */
+    color: #fff;
+    font-size: 1rem; /* Ajusta el tamaño de fuente según tu preferencia */
+  }
+  
+  /* Estilo para las imágenes dentro de la descripción */
+  .descripcion img {
+    max-width: 100%; /* Las imágenes se ajustarán automáticamente al ancho del contenedor */
+    height: auto; /* Mantendrá la proporción de aspecto original de las imágenes */
+  }
+  .legendItems{
+    bottom:0 !important;
+    top:10px !important;
+    height: 22px !important;
+  }
+  
