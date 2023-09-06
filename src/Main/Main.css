@@ -1,3 +1,7 @@
+body{
+    border: 0px
+}
+
 .main {
     background-image: url('../Img/fondo1.jpg');
     background-size: cover;
