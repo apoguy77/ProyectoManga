@@ -22,3 +22,15 @@ h1 {
     margin-bottom: 20px;
     margin-top: 20px; /* Ajusta este valor según tus preferencias */
 }
+
+
+.main .carousel {
+    max-width: 350px; /* Ajusta el ancho máximo según tu preferencia */
+    margin: 0 auto; /* Centra el carrusel horizontalmente en la pantalla */
+}
+
+/* Estilo para las imágenes dentro del carrusel */
+.main .carousel img {
+    max-width: 100%; /* Las imágenes se ajustarán automáticamente al ancho del contenedor */
+    height: auto; /* Mantendrá la proporción de aspecto original de las imágenes */
+}
