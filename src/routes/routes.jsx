@@ -1,17 +1,32 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Login from './Login'; // Tu componente de inicio de sesión
-import MainUser from './MainUser';
+import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
+import MainUser from '../MainUser/MainUser.jsx'; // Asegúrate de que la ruta del archivo sea correcta
 
 function App() {
+  const isLoggedIn = isUserAuthenticated(); // Reemplaza esto con tu función de autenticación real
+
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route path="/main-usua" component={MainUser} />
-      </Switch>
+      <Route path="/" exact component={Login} />
+      <PrivateRoute
+        path="/main-usuario"
+        component={MainUser}
+        isAuthenticated={isLoggedIn}
+      />
     </Router>
   );
 }
+
+const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      isAuthenticated ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/" />
+      )
+    }
+  />
+);
 
 export default App;

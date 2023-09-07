@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Axios from 'axios';
 import './Header.css';
+import { useNavigate } from 'react-router-dom';
+//import { redirect } from 'react-router-dom';
+//import { useHistory } from 'react-router-dom';
 
-Modal.setAppElement('#root');
+
+
 
 function LoginModal({ isOpen, onRequestClose }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -16,7 +20,7 @@ function LoginModal({ isOpen, onRequestClose }) {
     setIsLogin(!isLogin);
     setMessage(''); // Limpiar cualquier mensaje de error o éxito
   };
-
+  const navpagi = useNavigate();
   const handleLogin = async () => {
     try {
       const response = await Axios.post('/api/usuarios/login', {
@@ -26,6 +30,7 @@ function LoginModal({ isOpen, onRequestClose }) {
       console.log('Login successful:', response.data);
       // Manejar la respuesta, por ejemplo, redirigir al usuario o mostrar un mensaje de éxito
       setMessage('Inicio de sesión exitoso');
+      navpagi("cargopagina")
     } catch (error) {
       console.error('Login error:', error);
       // Manejar el error, por ejemplo, mostrar un mensaje de error
