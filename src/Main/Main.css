@@ -55,8 +55,7 @@ h1 {
 
 .descripcion {
     display: flex;
-    flex-direction: column;
-    /* Alinea el texto y la descripción verticalmente */
+    flex-direction: column;/* Alinea el texto y la descripción verticalmente */
     align-items: flex-start;
     text-align: left;
     margin-top: 20px;
@@ -73,10 +72,9 @@ h1 {
 }
 
 .main {
-    /* ... otros estilos ... */
+ 
     display: flex;
     flex-direction: column;
-    /* Cambiar a 'column' si quieres apilarlos verticalmente */
     align-items: center;
     justify-content: flex-start;
     text-align: center;
@@ -85,14 +83,10 @@ h1 {
 .carousel-container {
     display: flex;
     justify-content: space-between;
-    /* Para que los carruseles se muestren uno al lado del otro */
     max-width: 900px;
-    /* Ajustar el ancho máximo según tu diseño */
-    margin-top: 40px;
-    /* Espacio entre los carruseles */
+    margin-top: 40px;/* Espacio carruseles */
 }
 
 .carousel-separator {
-    width: 150px;
-    /* Ancho del espacio separador entre carruseles */
+    width: 150px;/* Ancho del espacio carruseles */
 }
