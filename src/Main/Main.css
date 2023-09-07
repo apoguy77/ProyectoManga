@@ -1,4 +1,4 @@
-body{
+body {
     border: 0px
 }
 
@@ -14,35 +14,49 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Cambia a flex-start */
+    justify-content: flex-start;
+    /* Cambia a flex-start */
     text-align: center;
 }
 
 h1 {
-    font-size: 3rem;
+
+    font-family: 'Noto Serif', serif;
+    font-size: 2.8rem;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
-    margin-top: 20px; /* Ajusta este valor según tus preferencias */
+    margin-top: 20px;
+    background: linear-gradient(45deg, #746c72, #5a5ad2);
+    -webkit-text-stroke: 0.100px black;
+    text-shadow: 100px black;
+    animation: moveTitle s ease-in-out infinite alternate;
+
 }
 
 
 .main .carousel {
-    max-width: 400px; /* Ajusta el ancho máximo según tu preferencia */
-    margin: 0 auto; /* Centra el carrusel horizontalmente en la pantalla */
+    max-width: 400px;
+    /* Ajusta el ancho máximo según tu preferencia */
+    margin: 0 auto;
+    /* Centra el carrusel horizontalmente en la pantalla */
 }
 
 .main .carousel img {
-    max-width: 100%; /* Las imágenes se ajustarán automáticamente al ancho del contenedor */
-    height: auto; /* Mantendrá la proporción de aspecto original de las imágenes */
+    max-width: 100%;
+    /* Las imágenes se ajustarán automáticamente al ancho del contenedor */
+    height: auto;
+    /* Mantendrá la proporción de aspecto original de las imágenes */
 }
-.container-carrussel{
+
+.container-carrussel {
     display: flex;
 }
 
 .descripcion {
     display: flex;
-    flex-direction: column; /* Alinea el texto y la descripción verticalmente */
+    flex-direction: column;
+    /* Alinea el texto y la descripción verticalmente */
     align-items: flex-start;
     text-align: left;
     margin-top: 20px;
@@ -53,13 +67,16 @@ h1 {
     color: #0a0909;
     font-size: 1rem;
 }
+
 .legend {
     font-size: 5rem;
 }
+
 .main {
     /* ... otros estilos ... */
     display: flex;
-    flex-direction: column; /* Cambiar a 'column' si quieres apilarlos verticalmente */
+    flex-direction: column;
+    /* Cambiar a 'column' si quieres apilarlos verticalmente */
     align-items: center;
     justify-content: flex-start;
     text-align: center;
@@ -67,10 +84,15 @@ h1 {
 
 .carousel-container {
     display: flex;
-    justify-content: space-between; /* Para que los carruseles se muestren uno al lado del otro */
-    max-width: 900px; /* Ajustar el ancho máximo según tu diseño */
-    margin-top: 40px; /* Espacio entre los carruseles */
+    justify-content: space-between;
+    /* Para que los carruseles se muestren uno al lado del otro */
+    max-width: 900px;
+    /* Ajustar el ancho máximo según tu diseño */
+    margin-top: 40px;
+    /* Espacio entre los carruseles */
 }
+
 .carousel-separator {
-    width: 150px; /* Ancho del espacio separador entre carruseles */
+    width: 150px;
+    /* Ancho del espacio separador entre carruseles */
 }
