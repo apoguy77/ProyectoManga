@@ -1,14 +1,53 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import Axios from 'axios';
 import './Header.css';
 
 Modal.setAppElement('#root');
 
 function LoginModal({ isOpen, onRequestClose }) {
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
+    setMessage(''); // Limpiar cualquier mensaje de error o éxito
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await Axios.post('/api/usuarios/login', {
+        email,
+        password,
+      });
+      console.log('Login successful:', response.data);
+      // Manejar la respuesta, por ejemplo, redirigir al usuario o mostrar un mensaje de éxito
+      setMessage('Inicio de sesión exitoso');
+    } catch (error) {
+      console.error('Login error:', error);
+      // Manejar el error, por ejemplo, mostrar un mensaje de error
+      setMessage('Error de inicio de sesión');
+    }
+  };
+
+  const handleRegister = async () => {
+    try {
+      const response = await Axios.post('/api/usuarios', {
+        name,
+        email,
+        password,
+      });
+      console.log('Registration successful:', response.data);
+      // Manejar la respuesta, por ejemplo, redirigir al usuario o mostrar un mensaje de éxito
+      setMessage('Registro exitoso');
+    } catch (error) {
+      console.error('Registration error:', error);
+      // Manejar el error, por ejemplo, mostrar un mensaje de error
+      setMessage('Error de registro');
+    }
   };
 
   return (
@@ -16,32 +55,45 @@ function LoginModal({ isOpen, onRequestClose }) {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Login and Registration Modal"
-      className="custom-modal" // Aplica la clase CSS para la modal
+      className="custom-modal"
     >
       <div>
         <h2>{isLogin ? 'Iniciar Sesión' : 'Registrarse'}</h2>
         {isLogin ? (
-          <LoginForm onToggleForm={toggleForm} />
+          <LoginForm
+            onToggleForm={toggleForm}
+            onLogin={handleLogin}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+          />
         ) : (
-          <RegistrationForm onToggleForm={toggleForm} />
+          <RegistrationForm
+            onToggleForm={toggleForm}
+            onRegister={handleRegister}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+          />
         )}
+        {message && <div className="message">{message}</div>}
       </div>
     </Modal>
   );
 }
 
-function LoginForm({ onToggleForm }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = (e) => {
+function LoginForm({ onToggleForm, onLogin, email, setEmail, password, setPassword }) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes implementar la lógica para el inicio de sesión,
-    // por ejemplo, hacer una solicitud HTTP a tu servidor.
+    onLogin();
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Email:</label>
         <input
@@ -67,19 +119,23 @@ function LoginForm({ onToggleForm }) {
   );
 }
 
-function RegistrationForm({ onToggleForm }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleRegister = (e) => {
+function RegistrationForm({
+  onToggleForm,
+  onRegister,
+  name,
+  setName,
+  email,
+  setEmail,
+  password,
+  setPassword,
+}) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes implementar la lógica para el registro de usuario,
-    // por ejemplo, hacer una solicitud HTTP a tu servidor.
+    onRegister();
   };
 
   return (
-    <form onSubmit={handleRegister}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Nombre:</label>
         <input
