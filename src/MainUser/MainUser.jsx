@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './MainUser.css'
-    
+import logoMainUser from '../Img/Alquiler/fondoMainUser1.webp';
+
 import onepiece from '../Img/Alquiler/onepiece.jpg'
 import dragonball from '../Img/Alquiler/dragonball.jpg'
 import hunte from '../Img/Alquiler/hunte.jpeg'
@@ -10,6 +11,7 @@ import jojo from '../Img/Alquiler/jojo.jpg'
 import fullmetal from '../Img/Alquiler/fullmetal.jpg'
 import golgo from '../Img/Alquiler/golgo.jpeg'
 import pokemon from '../Img/Alquiler/pokemon.jpg'
+
 class MainUser extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +20,7 @@ class MainUser extends Component {
                 {
                     id: 1,
                     nombre: 'One Piece de Eiichirō Oda',
-                    descripcion: 'La historia narra las aventuras de Monkey D. Luffy, un joven pirata que sueña con convertirse en el rey de los piratas al encontrar el One Piece, un tesoro dejado por un antiguo rey, Gold D. Roger. Además, tiene un poder muy útil: es totalmente elástico.',
+                    descripcion: 'Un joven pirata que sueña con convertirse en el rey de los piratas al encontrar el One Piece, un tesoro dejado por un antiguo rey, Gold D. Roger. Además, tiene un poder muy útil: es totalmente elástico.',
                     imagen: onepiece,
                     valor: '$100.000',
                     disponibles: 5, // Cantidad inicial disponible
@@ -42,7 +44,7 @@ class MainUser extends Component {
                 {
                     id: 4,
                     nombre: 'El cultísimo Death Note',
-                    descripcion: 'Death Note cuenta la historia de Light Yagami que un día encuentra un cuaderno llamado Death Note, en el que puede escribir nombres. Todas las personas anotadas en el cuaderno mueren.',
+                    descripcion: 'Death Note cuenta la historia de Light Yagami que un día encuentra un cuaderno llamado Death Note, en el que puede escribir nombres.',
                     imagen: death,
                     valor: '$90.000',
                     disponibles: 10, // Cantidad inicial disponible
@@ -58,7 +60,7 @@ class MainUser extends Component {
                 {
                     id: 6,
                     nombre: 'Jojo’s Bizarre Adventure',
-                    descripcion: 'El manga Jojo  Bizarre Adventure es bastante difícil de clasificar: acción, fantasía, familia, historia o incluso terror, este manga es tan completo como complejo.',
+                    descripcion: 'Jojo  Bizarre Adventure es bastante difícil de clasificar: acción, fantasía, familia, historia o incluso terror, este manga es tan completo como complejo.',
                     imagen: jojo,
                     valor: '$180.000',
                     disponibles: 10, // Cantidad inicial disponible
@@ -74,7 +76,7 @@ class MainUser extends Component {
                 {
                     id: 8,
                     nombre: 'Golgo 13 ',
-                    descripcion: 'Tiene fama de ser el manga más longevo, cuya publicación se ha extendido más de cincuenta años. La serie también ha vendido más de 280 millones de copias en varios formatos, incluyendo compilaciones, convirtiéndose así en el segundo manga más vendido de la historia.',
+                    descripcion: 'Tiene fama de ser el manga más longevo, cuya publicación se ha extendido más de cincuenta años.',
                     imagen: golgo,
                     valor: '$190.000',
                     disponibles: 10, // Cantidad inicial disponible
@@ -82,7 +84,7 @@ class MainUser extends Component {
                 {
                     id: 9,
                     nombre: 'Pokémon Adventures',
-                    descripcion: 'Es un manga basado en los videojuegos Pokémon, actualmente es de los 10 mangas más vendidos a nivel mundial con 150 millones de copias.',
+                    descripcion: 'Es un manga basado en los videojuegos Pokémon.',
                     imagen: pokemon,
                     valor: '200.000',
                     disponibles: 10, // Cantidad inicial disponible
@@ -109,8 +111,13 @@ class MainUser extends Component {
     };
 
     render() {
-        return (
-            <div>
+        return (    
+            <div style={{
+                backgroundImage: `url(${logoMainUser})`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundAttachment: 'fixed',
+            }}>
                 <h1>Alquiler de Productos</h1>
                 <div className="productos-container">
                     {this.state.productos.map((producto) => (
@@ -130,7 +137,7 @@ class MainUser extends Component {
                     ))}
                 </div>
             </div>
-        );
+        );    
     }
 }
 

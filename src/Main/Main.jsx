@@ -1,8 +1,8 @@
-import React from 'react';
+import {useEffect} from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './main.css';
-
+import axios from "axios";
 import Naruto from '../Img/narutoCarrusel1.jpg';
 import guardianes from '../Img/guardianesCarrusel2.jpg';
 import drago from '../Img/dragoCarrusel3.jpg';
@@ -14,6 +14,13 @@ import doraemon from '../Img/doraemonCarrusel7.jpg';
 import black  from  '../Img/blackCarrusel8.jpg';
 
 const Main = () => {
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_REACT_APP_API_URL + "api/obtenermanga")
+        .then((res)=> {console.log(res)})
+        .catch((err) => {console.log(err)})
+        
+    }, [])
+    
     const carousel1Images = [
         Naruto,
         guardianes,
