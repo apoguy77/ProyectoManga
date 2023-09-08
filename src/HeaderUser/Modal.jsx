@@ -32,7 +32,6 @@ function LoginModal({ isOpen, onRequestClose }) {
       navpagi("cargopagina")
     } catch (error) {
       console.error('Login error:', error);
-    
       
       setMessage('Error de inicio de sesión');
     }
