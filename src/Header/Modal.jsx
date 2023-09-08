@@ -3,9 +3,6 @@ import Modal from 'react-modal';
 import Axios from 'axios';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
-//import { redirect } from 'react-router-dom';
-//import { useHistory } from 'react-router-dom';
-
 
 
 
@@ -18,7 +15,7 @@ function LoginModal({ isOpen, onRequestClose }) {
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
-    setMessage(''); // Limpiar cualquier mensaje de error o éxito
+    setMessage(''); 
   };
   const navpagi = useNavigate();
   const handleLogin = async () => {
@@ -28,12 +25,12 @@ function LoginModal({ isOpen, onRequestClose }) {
         password,
       });
       console.log('Login successful:', response.data);
-      // Manejar la respuesta, por ejemplo, redirigir al usuario o mostrar un mensaje de éxito
+      
       setMessage('Inicio de sesión exitoso');
       navpagi("cargopagina")
     } catch (error) {
       console.error('Login error:', error);
-      // Manejar el error, por ejemplo, mostrar un mensaje de error
+    
       setMessage('Error de inicio de sesión');
     }
   };

@@ -5,12 +5,14 @@ function App() {
   const isLoggedIn = isUserAuthenticated(); // Reemplaza esto con tu función de autenticación real
 
   return (
+    
     <Router>
       <Route path="/" exact component={Login} />
       <PrivateRoute
         path="/main-usuario"
         component={MainUser}
         isAuthenticated={isLoggedIn}
+        
       />
     </Router>
   );

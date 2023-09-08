@@ -1,50 +1,55 @@
 .productos-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
-  }
-  
-  .producto {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    width: 300px;
-    text-align: center;
-  }
-  
-  .producto img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .producto h2 {
-    margin: 10px 0;
-    font-size: 1.5rem;
-  }
-  
-  .producto p {
-    font-size: 1rem;
-  }
-  
-  .producto button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-  }
-  
-  .producto button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .producto button:hover {
-    background-color: #0056b3;
-  }
-  
-  
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.producto {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 300px;
+  text-align: center;
+  background-color: #f9f9f9; /* Color de fondo para resaltar los productos */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.producto img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px; /* Bordes redondeados para la imagen */
+}
+
+.producto h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  color: #333; /* Color de texto más oscuro */
+  font-family: 'Arial', sans-serif; /* Cambia la fuente de texto */
+}
+
+.producto p {
+  font-size: 1rem;
+  color: #666; /* Color de texto más suave */
+  font-family: 'Arial', sans-serif; /* Cambia la fuente de texto */
+}
+
+.producto button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  border-radius: 5px; /* Bordes redondeados para el botón */
+}
+
+.producto button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.producto button:hover {
+  background-color: #0056b3;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './MainUser.css'
-
+    
 import onepiece from '../Img/Alquiler/onepiece.jpg'
 import dragonball from '../Img/Alquiler/dragonball.jpg'
 import hunte from '../Img/Alquiler/hunte.jpeg'
