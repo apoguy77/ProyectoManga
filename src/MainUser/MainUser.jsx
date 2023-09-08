@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import './MainUser.css'
 import logoMainUser from '../Img/Alquiler/fondoMainUser1.webp';
 
@@ -11,11 +12,31 @@ import jojo from '../Img/Alquiler/jojo.jpg'
 import fullmetal from '../Img/Alquiler/fullmetal.jpg'
 import golgo from '../Img/Alquiler/golgo.jpeg'
 import pokemon from '../Img/Alquiler/pokemon.jpg'
+=======
+import './MainUser.css';
+import axios from 'axios';
+
+// Componente Producto reutilizable
+function Producto({ _id, title, descripcion, imageFileName, CantDis, CanttAl, precio }) {
+    const imageUrl = `/api/mangas/images/${imageFileName}`; // Nueva ruta de la imagen en el backend
+    return (
+        <div className="producto" key={_id}>
+            <img src={imageUrl} alt={title} />
+            <h2>{title}</h2>
+            <p>{descripcion}</p>
+            <p>Valor: ${precio}</p>
+            <p>Cantidad disponible: {CantDis}</p>
+            <p>Disponibles para alquilar: {CanttAl}</p>
+        </div>
+    );
+}
+>>>>>>> 896164e378964a5ea674c8bdb037ba929578187e
 
 class MainUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
+<<<<<<< HEAD
             productos: [
                 {
                     id: 1,
@@ -91,26 +112,24 @@ class MainUser extends Component {
                 },
                
             ],
+=======
+            productos: [],
+>>>>>>> 896164e378964a5ea674c8bdb037ba929578187e
         };
     }
 
-    alquilarProducto = (id) => {
-        this.setState((prevState) => {
-            const productosActualizados = prevState.productos.map((producto) => {
-                if (producto.id === id && producto.disponibles > 0) {
-                    return {
-                        ...producto,
-                        disponibles: producto.disponibles - 1,
-                    };
-                }
-                return producto;
+    componentDidMount() {
+        axios.get('/api/mangas')
+            .then((response) => {
+                this.setState({ productos: response.data });
+            })
+            .catch((error) => {
+                console.error('Error al obtener los datos del servidor', error);
             });
-
-            return { productos: productosActualizados };
-        });
-    };
+    }
 
     render() {
+<<<<<<< HEAD
         return (    
             <div style={{
                 backgroundImage: `url(${logoMainUser})`,
@@ -118,22 +137,16 @@ class MainUser extends Component {
                 backgroundRepeat: 'no-repeat',
                 backgroundAttachment: 'fixed',
             }}>
+=======
+        const { productos } = this.state;
+
+        return (
+            <div>
+>>>>>>> 896164e378964a5ea674c8bdb037ba929578187e
                 <h1>Alquiler de Productos</h1>
                 <div className="productos-container">
-                    {this.state.productos.map((producto) => (
-                        <div key={producto.id} className="producto">
-                            <img src={producto.imagen} alt={producto.nombre} />
-                            <h2>{producto.nombre}</h2>
-                            <p>{producto.descripcion}</p>
-                            <p>{producto.valor}</p>
-                            <p>Disponibles para alquilar: {producto.disponibles}</p>
-                            <button
-                                onClick={() => this.alquilarProducto(producto.id)}
-                                disabled={producto.disponibles === 0}
-                            >
-                                Alquilar
-                            </button>
-                        </div>
+                    {productos.map((producto) => (
+                        <Producto {...producto} />
                     ))}
                 </div>
             </div>

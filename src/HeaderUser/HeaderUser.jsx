@@ -1,20 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../Img/Logo.png'
-import './Header.css'
-import LoginModal from './Modal';
-
-
-const Header = () =>{
-   const [isModalOpen, setIsModalOpen] = useState(false);
-
-   const openModal = () => {
-     setIsModalOpen(true);
-   };
- 
-   const closeModal = () => {
-     setIsModalOpen(false);
-   };
-
+import './Header.css';
    
    return (
        <header>
@@ -29,5 +15,5 @@ const Header = () =>{
      
 
   )
-}
-export {Header}
+
+export {HeaderUser}
