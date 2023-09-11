@@ -3,8 +3,8 @@ import './MainUser.css';
 import axios from 'axios';
 
 // Componente Producto reutilizable
-function Producto({ _id, title, descripcion, imageFileName, CantDis, CanttAl, precio }) {
-    const imageUrl = `/api/mangas/images/${imageFileName}`; // Nueva ruta de la imagen en el backend
+function Producto({ _id, title, descripcion, imageFileName, image, CantDis, CanttAl, precio }) {
+    const imageUrl = `/img/${image}`; // Nueva ruta de la imagen en el backend
     return (
         <div className="producto" key={_id}>
             <img src={imageUrl} alt={title} />
