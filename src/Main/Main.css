@@ -26,8 +26,7 @@ h1 {
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
-    margin-top: 20px;
-    background: linear-gradient(45deg, #746c72, #5a5ad2);
+    margin-top: 0px;
     -webkit-text-stroke: 0.100px black;
     text-shadow: 100px black;
     animation: moveTitle s ease-in-out infinite alternate;
@@ -55,7 +54,8 @@ h1 {
 
 .descripcion {
     display: flex;
-    flex-direction: column;/* Alinea el texto y la descripción verticalmente */
+    flex-direction: column;
+    /* Alinea el texto y la descripción verticalmente */
     align-items: flex-start;
     text-align: left;
     margin-top: 20px;
@@ -72,7 +72,7 @@ h1 {
 }
 
 .main {
- 
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,9 +84,11 @@ h1 {
     display: flex;
     justify-content: space-between;
     max-width: 900px;
-    margin-top: 40px;/* Espacio carruseles */
+    margin-top: 40px;
+    /* Espacio carruseles */
 }
 
 .carousel-separator {
-    width: 150px;/* Ancho del espacio carruseles */
+    width: 150px;
+    /* Ancho del espacio carruseles */
 }
