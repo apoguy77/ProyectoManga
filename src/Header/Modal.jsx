@@ -22,7 +22,7 @@ function LoginModal({ isOpen, onRequestClose }) {
   const navpagi = useNavigate();
   const handleLogin = async () => {
     try {
-      const response = await Axios.post('/api/usuarios/login', {
+          const response = await Axios.post('/api/usuarios/login', {
         email,
         password,
       });
