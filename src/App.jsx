@@ -5,6 +5,7 @@ import Main from './Main/Main'
 import MainUser from './MainUser/MainUser'
 
 
+
 function App() {
 
 
@@ -12,7 +13,7 @@ function App() {
     <>
       <Header />
       <Main />
-    
+      
     </>
   )
 }
