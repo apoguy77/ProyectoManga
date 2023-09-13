@@ -3,7 +3,7 @@ body {
 }
 
 .main {
-    background-image: url('../Img/fondo1.jpg');
+    background-image: url('../Img/manga6.jpg');
     background-size: cover;
     width: 100%;
     min-height: 100vh;
@@ -63,7 +63,7 @@ h1 {
 }
 
 .descripcion p {
-    color: #0a0909;
+    color: #f5f1f1;
     font-size: 1rem;
 }
 
