@@ -7,13 +7,14 @@ import MainUser from './MainUser/MainUser'
 
 
 function App() {
+  
 
 
   return (
     <>
       <Header />
       <Main />
-      
+      <MainUser/>
     </>
   )
 }
