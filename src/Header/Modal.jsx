@@ -1,59 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Axios from 'axios';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 
-function LoginModal({ isOpen, onRequestClose, onLogin }) {
+
+
+
+
+function LoginModal({ isOpen, onRequestClose }) {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  useEffect(() => {
-    if (message.includes('Inicio de sesión exitoso, Bienvenido')) {
-      // Extrae el nombre del mensaje
-      const userName = message.split('Bienvenido ')[1];
-      // Llama a la función onLogin y pasa el nombre del usuario
-      onLogin(userName);
-    }
-  }, [message, onLogin]);
-
   const toggleForm = () => {
     setIsLogin(!isLogin);
-    setMessage('');
+    setMessage(''); 
   };
-
   const navpagi = useNavigate();
-
   const handleLogin = async () => {
     try {
-      const response = await Axios.post('/api/usuarios/login', {
+          const response = await Axios.post('/api/usuarios/login', {
         email,
         password,
       });
-  
-      if (response.status === 200 && response.data.message === 'Inicio de sesión exitoso') {
-        // Inicio de sesión exitoso
-        console.log('Login successful:', response.data);
-  
-        // Aquí accedemos al nombre del usuario desde la respuesta
-        const userName = response.data.user.name;
-  
-        setMessage(`Inicio de sesión exitoso, Bienvenido ${userName}`);
-        
-        // Realiza cualquier acción adicional que necesites
-        // ...
-  
-        // Cierra el modal después de iniciar sesión
-        onRequestClose();
-      } else {
-        // Inicio de sesión fallido
-        setMessage('Error de inicio de sesión');
-      }
+      console.log('Login successful:', response.data);
+      
+      setMessage('Inicio de sesión exitoso');
+      navpagi("cargopagina")
     } catch (error) {
       console.error('Login error:', error);
+    
+      
       setMessage('Error de inicio de sesión');
     }
   };

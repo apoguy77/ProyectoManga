@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './MainUser.css';
 import axios from 'axios';
+import AlquilerModal from './AlquilerModal';
 
 class Producto extends Component {
     constructor(props) {
@@ -9,27 +10,45 @@ class Producto extends Component {
             cantidadDisponible: this.props.CantDis,
             fechaAlquiler: null,
             fechaEntrega: null,
+            modalVisible: false,
         };
     }
 
+    toggleModal = () => {
+        this.setState((prevState) => ({
+            modalVisible: !prevState.modalVisible,
+        }));
+    };
+
     handleAlquiler = () => {
         if (this.state.cantidadDisponible > 0) {
-            const fechaActual = new Date();
-            const fechaEntrega = new Date();
-            fechaEntrega.setDate(fechaEntrega.getDate() + 3);
-
-            this.setState({
-                cantidadDisponible: this.state.cantidadDisponible - 1,
-                fechaAlquiler: fechaActual,
-                fechaEntrega: fechaEntrega,
-            });
-
-            axios.post('/api/registrar-alquiler', {
-                fechaAlquiler: fechaActual,
-                fechaEntrega: fechaEntrega,
-                productoId: this.props._id,
-            });
+            this.toggleModal(); // Abre el modal
         }
+    };
+
+    confirmAlquiler = () => {
+        // Envía los datos al servidor
+        axios
+            .post('/api/registrar-alquiler', {
+                fechaAlquiler: this.state.fechaAlquiler,
+                fechaEntrega: this.state.fechaEntrega,
+                productoId: this.props._id,
+            })
+            .then((response) => {
+                // Actualiza el estado o realiza cualquier otra acción necesaria
+                console.log('Alquiler registrado con éxito');
+            })
+            .catch((error) => {
+                console.error('Error al registrar el alquiler', error);
+            });
+
+        // Cierra el modal y reinicia las fechas
+        this.toggleModal();
+        this.setState({
+            fechaAlquiler: null,
+            fechaEntrega: null,
+            cantidadDisponible: this.state.cantidadDisponible - 1,
+        });
     };
 
     render() {
@@ -47,6 +66,17 @@ class Producto extends Component {
                 {fechaAlquiler && <p>Fecha de Alquiler: {fechaAlquiler.toDateString()}</p>}
                 {fechaEntrega && <p>Fecha de Entrega: {fechaEntrega.toDateString()}</p>}
                 <button onClick={this.handleAlquiler}>Alquilar</button>
+
+                {/* Modal */}
+                {this.state.modalVisible && (
+                    <AlquilerModal
+                        modalVisible={this.state.modalVisible}
+                        fechaAlquiler={this.state.fechaAlquiler}
+                        fechaEntrega={this.state.fechaEntrega}
+                        confirmAlquiler={this.confirmAlquiler}
+                        toggleModal={this.toggleModal}
+                    />
+                )}
             </div>
         );
     }
