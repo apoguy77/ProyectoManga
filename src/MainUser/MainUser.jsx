@@ -34,29 +34,28 @@ class Producto extends Component {
         const fechaAlquiler = new Date();
         const fechaEntrega = new Date(fechaAlquiler.getTime() + 2 * 24 * 60 * 60 * 1000);
         const { _id: mangaId, userId } = this.props;
- 
-
- axios.post('/api/usuarios/registrar-alquiler', {
-     userId, 
-     fechaAlquiler, 
-     fechaEntrega,
-     manga: mangaId,
- 
- })
- .then((response) => {
-     // Maneja la respuesta del servidor y actualiza la interfaz de usuario según sea necesario
-     console.log('Alquiler registrado con éxito', response.data);
-     // Actualiza la interfaz de usuario para reflejar el alquiler
-     this.setState({
-         cantidadDisponible: this.state.cantidadDisponible - 1,
-         modalVisible: false,
-     });
- })
- .catch((error) => {
-     console.error('Error al registrar el alquiler', error);
-     // Maneja los errores adecuadamente
- });
-};
+    
+        axios
+            .put(`/api/mangas/descontar/${mangaId}`, {
+                cantidadADescontar: 1, // Cantidad que deseas descontar (puede ser 1)
+                cantidadASumar: 1, // Cantidad que deseas sumar a la cantidad alquilada (puede ser 1)
+            })
+            .then((response) => {
+                // Maneja la respuesta del servidor y actualiza la interfaz de usuario según sea necesario
+                console.log('Alquiler registrado con éxito', response.data);
+                // Actualiza la interfaz de usuario para reflejar el alquiler
+                this.setState({
+                    cantidadDisponible: this.state.cantidadDisponible - 1,
+                    fechaAlquiler,
+                    fechaEntrega,
+                    modalVisible: false,
+                });
+            })
+            .catch((error) => {
+                console.error('Error al registrar el alquiler', error);
+                // Maneja los errores adecuadamente
+            });
+    };
 
     render() {
         const { title, descripcion, image, precio } = this.props;
