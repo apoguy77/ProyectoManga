@@ -22,7 +22,7 @@ function App() {
     <>
       <Header isAuthenticated={isAuthenticated} userName={userName} onLogin={handleLogin} onLogout={handleLogout} />
       <Main />
-      <MainUser isAuthenticated={isAuthenticated} />
+      <MainUser isAuthenticated={isAuthenticated}  />
     </>
   );
 }
