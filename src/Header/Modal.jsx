@@ -19,14 +19,6 @@ function LoginModal({ isOpen, onRequestClose, onLogin }) {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    if (message.includes('Inicio de sesión exitoso, Bienvenido')) {
-      // Extrae el nombre del mensaje
-      const userName = message.split('Bienvenido ')[1];
-      // Llama a la función onLogin y pasa el nombre del usuario
-      onLogin(userName);
-    }
-  }, [message, onLogin]);
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -45,14 +37,16 @@ function LoginModal({ isOpen, onRequestClose, onLogin }) {
       if (response.status === 200 && response.data.message === 'Inicio de sesión exitoso') {
         // Inicio de sesión exitoso
         console.log('Login successful:', response.data);
+        
 
         // Aquí accedemos al nombre del usuario desde la respuesta
         const userName = response.data.user.name;
+        const userId = response.data.user._id; // Agregar esta línea
 
-        setMessage(`Inicio de sesión exitoso, Bienvenido ${userName}`);
+        
 
         // Llama a la función onLogin y pasa el nombre del usuario
-        onLogin(userName);
+        onLogin(userName, userId)
 
         // Realiza cualquier acción adicional que necesites
         // ...

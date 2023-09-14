@@ -33,10 +33,11 @@ class Producto extends Component {
     confirmAlquiler = () => {
         const fechaAlquiler = new Date();
         const fechaEntrega = new Date(fechaAlquiler.getTime() + 2 * 24 * 60 * 60 * 1000);
- const { _id: mangaId } = this.props;
+        const { _id: mangaId, userId } = this.props;
+ 
 
  axios.post('/api/usuarios/registrar-alquiler', {
-     userId: '6501128101eedc6ec8627796', // Reemplaza con el ID del usuario actual
+     userId, 
      fechaAlquiler, 
      fechaEntrega,
      manga: mangaId,
@@ -108,13 +109,14 @@ class MainUser extends Component {
 
     render() {
         const { productos } = this.state;
+        const { isAuthenticated, userId } = this.props;
 
         return (
             <div>
                 <h1 className='titulo'>Alquiler de Productos</h1>
-                <div className="productos-container">
-                    {productos.map((producto) => (
-                        <Producto key={producto._id} {...producto} isAuthenticated={this.props.isAuthenticated} />
+        <div className="productos-container">
+          {productos.map((producto) => (
+            <Producto key={producto._id} {...producto} isAuthenticated={isAuthenticated} userId={userId} /> 
                     ))}
                 </div>
             </div>

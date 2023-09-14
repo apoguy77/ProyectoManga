@@ -30,6 +30,7 @@ const Header = ({ isAuthenticated, userName, onLogin, onLogout }) => {
         {isAuthenticated ? (
           <div className="welcome-container">
           <span className="welcome-text">Bienvenido, {userName}</span>
+
           <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
         </div>
         ) : (

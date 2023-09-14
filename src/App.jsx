@@ -7,9 +7,11 @@ import MainUser from './MainUser/MainUser';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userName, setUserName] = useState('');
+  const [userId, setuserId] = useState('');
 
-  const handleLogin = (name) => {
+  const handleLogin = (name,_id) => {
     setUserName(name);
+    setuserId(_id);
     setIsAuthenticated(true);
   };
 
@@ -22,7 +24,7 @@ function App() {
     <>
       <Header isAuthenticated={isAuthenticated} userName={userName} onLogin={handleLogin} onLogout={handleLogout} />
       <Main />
-      <MainUser isAuthenticated={isAuthenticated}  />
+      <MainUser isAuthenticated={isAuthenticated}  userId={userId}/>
     </>
   );
 }
