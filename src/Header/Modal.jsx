@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import Axios from 'axios';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
-
-function LoginModal({ isOpen, onRequestClose }) {
+function LoginModal({ isOpen, onRequestClose, onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -34,12 +30,14 @@ function LoginModal({ isOpen, onRequestClose }) {
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
-    setMessage(''); 
+    setMessage('');
   };
+
   const navpagi = useNavigate();
+
   const handleLogin = async () => {
     try {
-          const response = await Axios.post('/api/usuarios/login', {
+      const response = await Axios.post('/api/usuarios/login', {
         email,
         password,
       });
@@ -67,8 +65,6 @@ function LoginModal({ isOpen, onRequestClose }) {
       }
     } catch (error) {
       console.error('Login error:', error);
-    
-      
       setMessage('Error de inicio de sesión');
     }
   };

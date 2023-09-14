@@ -21,10 +21,20 @@ class Producto extends Component {
     };
 
     handleAlquiler = () => {
-        if (this.state.cantidadDisponible > 0) {
+        if (this.props.isAuthenticated) {
+          // Verifica si el usuario está autenticado
+          if (this.state.cantidadDisponible > 0) {
             this.toggleModal(); // Abre el modal
+          }
+        } else {
+          // Si el usuario no está autenticado, puedes mostrar un mensaje o redirigirlo a la página de inicio de sesión.
+          alert('Debes iniciar sesión para alquilar este producto.');
+          // O puedes redirigir al usuario a la página de inicio de sesión, si tienes una ruta definida para ella.
+          // Ejemplo usando react-router-dom:
+          // this.props.history.push('/login');
         }
-    };
+      };
+      
 
     confirmAlquiler = () => {
         // Envía los datos al servidor
@@ -108,9 +118,9 @@ class MainUser extends Component {
             <div>
                 <h1 className='titulo'>Alquiler de Productos</h1>
                 <div className="productos-container">
-                    {productos.map((producto) => (
-                        <Producto key={producto._id} {...producto} />
-                    ))}
+                {productos.map((producto) => (
+  <Producto key={producto._id} {...producto} isAuthenticated={this.props.isAuthenticated} />
+))}
                 </div>
             </div>
         );
