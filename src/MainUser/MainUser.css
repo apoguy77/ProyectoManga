@@ -57,7 +57,7 @@ body {
 
 .producto button {
   padding: 10px 20px;
-  background-color: rgb(54, 78, 7);
+  background-color: rgb(91, 91, 210);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -72,7 +72,7 @@ body {
 }
 
 .producto button:hover {
-  background-color: #c65611;
+  background-color: rgb(28, 28, 129);
   
 }
 .titulo {

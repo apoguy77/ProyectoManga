@@ -95,6 +95,9 @@ function LoginModal({ isOpen, onRequestClose, onLogin }) {
       className="custom-modal"
     >
       <div>
+        <span className="close-text" onClick={onRequestClose}>
+          x
+        </span>
         <h2>{isLogin ? 'Iniciar Sesión' : 'Registrarse'}</h2>
         {isLogin ? (
           <LoginForm
@@ -122,7 +125,6 @@ function LoginModal({ isOpen, onRequestClose, onLogin }) {
     </Modal>
   );
 }
-
 function LoginForm({ onToggleForm, onLogin, email, setEmail, password, setPassword }) {
   const handleSubmit = (e) => {
     e.preventDefault();

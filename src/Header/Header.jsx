@@ -24,16 +24,16 @@ const Header = ({ isAuthenticated, userName, onLogin, onLogout }) => {
   return (
     <header>
       <figure>
-        <img src={Logo} alt="" />
+      <img src={Logo} alt="" className="logo-image" />
       </figure>
       <nav className='nav'>
         {isAuthenticated ? (
-          <div>
-            <span>Bienvenido, {userName}</span>
-            <button onClick={handleLogout}>Cerrar Sesión</button>
-          </div>
+          <div className="welcome-container">
+          <span className="welcome-text">Bienvenido, {userName}</span>
+          <button className="logout-button" onClick={handleLogout}>Cerrar Sesión</button>
+        </div>
         ) : (
-          <button onClick={openModal}>Acceder</button>
+          <button className="login-button" onClick={openModal}>Acceder</button>
         )}
       </nav>
       <LoginModal isOpen={isModalOpen} onRequestClose={closeModal} onLogin={onLogin} />
