@@ -69,8 +69,7 @@ class Producto extends Component {
                 <p>{descripcion}</p>
                 <p>Valor: ${precio}</p>
                 <p>Cantidad disponible: {cantidadDisponible}</p>
-                {fechaAlquiler && <p>Fecha de Alquiler: {fechaAlquiler.toDateString()}</p>}
-                {fechaEntrega && <p>Fecha de Entrega: {fechaEntrega.toDateString()}</p>}
+               
                 <button onClick={this.handleAlquiler}>Alquilar</button>
 
                 {this.state.modalVisible && (
