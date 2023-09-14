@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "6503220db350e02d551eb368"
+  },
+  "title": "One Piece",
+  "descripcion": "One Piece ​ es un manga escrito e ilustrado por el mangaka japonés Eiichirō Oda  ",
+  "image": "onepiece1.jpg",
+  "precio": "25.000",
+  "CantDis": 10,
+  "CanttAl": 3,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65032245b350e02d551eb36a"
+  },
+  "title": "Dragon Ball",
+  "descripcion": "serie de manga japonesa escrita e ilustrada por Akira Toriyama. Originalmente serializado en la revista de manga shōnen de Shueisha Weekly Shōnen",
+  "image": "dragonball.jpg",
+  "precio": "24.000",
+  "CantDis": 10,
+  "CanttAl": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65032298b350e02d551eb36c"
+  },
+  "title": "Death Note",
+  "descripcion": "es una serie de manga escrita por Tsugumi Ōba e ilustrada por Takeshi Obata, y cuya adaptación a serie de anime fue dirigida por Tetsurō Araki.",
+  "image": "death1.jpg",
+  "precio": "20.000",
+  "CantDis": 7,
+  "CanttAl": 4,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650322cdb350e02d551eb36e"
+  },
+  "title": "Full Metal Alchemist",
+  "descripcion": "Full Metal Alchemist, FMA o Hagaren, abreviatura en japonés es una serie de manga escrita e ilustrada por Hiromu Arakawa.",
+  "image": "fullmetal1.jpg",
+  "precio": "19.000",
+  "CantDis": 10,
+  "CanttAl": 2,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65032309b350e02d551eb370"
+  },
+  "title": "Golgo 13",
+  "descripcion": "Es publicado en la revista Big Comic de la editorial Shōgakukan desde octubre de 1968.",
+  "image": "golgo.jpeg",
+  "precio": "22.000",
+  "CantDis": 7,
+  "CanttAl": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65032342b350e02d551eb372"
+  },
+  "title": "JoJo's Bizarre",
+  "descripcion": "Es una serie de manga japonés escrita e ilustrada por Hirohiko Araki. Su publicación comenzó en la revista Weekly Shōnen Jump",
+  "image": "jojo.jpg",
+  "precio": "20.000",
+  "CantDis": 7,
+  "CanttAl": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6503236fb350e02d551eb374"
+  },
+  "title": "Bleach",
+  "descripcion": "La serie narra las aventuras de Ichigo Kurosaki, un adolescente que accidentalmente absorbe los poderes de una shinigami",
+  "image": "bleach1.jpg",
+  "precio": "19.000",
+  "CantDis": 7,
+  "CanttAl": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65032399b350e02d551eb376"
+  },
+  "title": "Pokémon Adventures",
+  "descripcion": "Pokémon Adventures, es un manga basado en los videojuegos de Pokémon",
+  "image": "pokemon.jpg",
+  "precio": "19.000",
+  "CantDis": 9,
+  "CanttAl": 1,
+  "__v": 0
+}]
