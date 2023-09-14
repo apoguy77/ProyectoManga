@@ -1,40 +1,44 @@
 import React, { useState } from 'react';
-import Logo from '../Img/Logo.png'
-import './Header.css'
+import Logo from '../Img/Logo.png';
+import './Header.css';
 import LoginModal from './Modal';
 
-const Header = () => {
-   const [isModalOpen, setIsModalOpen] = useState(false);
-   const [userName, setUserName] = useState(null); // Estado para almacenar el nombre del usuario
+const Header = ({ isAuthenticated, userName, onLogin, onLogout }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-   const openModal = () => {
-     setIsModalOpen(true);
-   };
- 
-   const closeModal = () => {
-     setIsModalOpen(false);
-   };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
-   const handleLogin = (name) => {
-     setUserName(name); // Almacena el nombre del usuario al iniciar sesión
-     closeModal(); // Cierra el modal después de iniciar sesión
-   };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-   return (
-     <header>
-       <figure>
-         <img src={Logo} alt="" />
-       </figure>
-       <nav className='nav'>
-         {userName ? (
-           <span>Bienvenido, {userName}</span>
-         ) : (
-           <a href="#" onClick={openModal}>Acceder</a>
-         )}
-       </nav>
-       <LoginModal isOpen={isModalOpen} onRequestClose={closeModal} onLogin={handleLogin} />
-     </header>
-   );
+  const handleLogout = () => {
+    // Realiza la acción de cierre de sesión aquí (por ejemplo, eliminando tokens, etc.)
+    // Luego, recarga la página para volver al estado inicial (botón "Acceder").
+    onLogout();
+    window.location.reload(); // Recarga la página
+  };
+
+  return (
+    <header>
+      <figure>
+        <img src={Logo} alt="" />
+      </figure>
+      <nav className='nav'>
+        {isAuthenticated ? (
+          <div>
+            <span>Bienvenido, {userName}</span>
+            <button onClick={handleLogout}>Cerrar Sesión</button>
+          </div>
+        ) : (
+          <button onClick={openModal}>Acceder</button>
+        )}
+      </nav>
+      <LoginModal isOpen={isModalOpen} onRequestClose={closeModal} onLogin={onLogin} />
+    </header>
+  );
 }
 
-export { Header }
+export { Header };

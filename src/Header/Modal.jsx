@@ -11,6 +11,14 @@ function LoginModal({ isOpen, onRequestClose, onLogin }) {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   useEffect(() => {
     if (message.includes('Inicio de sesión exitoso, Bienvenido')) {
       // Extrae el nombre del mensaje
@@ -33,19 +41,22 @@ function LoginModal({ isOpen, onRequestClose, onLogin }) {
         email,
         password,
       });
-  
+
       if (response.status === 200 && response.data.message === 'Inicio de sesión exitoso') {
         // Inicio de sesión exitoso
         console.log('Login successful:', response.data);
-  
+
         // Aquí accedemos al nombre del usuario desde la respuesta
         const userName = response.data.user.name;
-  
+
         setMessage(`Inicio de sesión exitoso, Bienvenido ${userName}`);
-        
+
+        // Llama a la función onLogin y pasa el nombre del usuario
+        onLogin(userName);
+
         // Realiza cualquier acción adicional que necesites
         // ...
-  
+
         // Cierra el modal después de iniciar sesión
         onRequestClose();
       } else {
@@ -57,6 +68,7 @@ function LoginModal({ isOpen, onRequestClose, onLogin }) {
       setMessage('Error de inicio de sesión');
     }
   };
+
 
   const handleRegister = async () => {
     try {

@@ -93,23 +93,29 @@ img{
     border-radius: 5px;
   }
   
-  button[type="submit"] {
-    background-color: rgb(196, 111, 27);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
   }
   
-  button[type="submit"]:hover {
-    background-color: rgb(131, 101, 71);
+  /* Estilo para el botón "Acceder" */
+  button.login-button {
+    background-color: #007bff; /* Puedes personalizar el color de fondo según tu diseño */
+    margin-right: 10px; /* Margen derecho para separar los botones */
   }
   
-  p {
-    text-align: center;
-    margin-top: 10px;
+  /* Estilo para el botón "Cerrar Sesión" */
+  button.logout-button {
+    background-color: #dc3545; /* Puedes personalizar el color de fondo según tu diseño */
+  }
+  
+  /* Estilo para el botón "Cerrar Sesión" cuando se pasa el mouse sobre él */
+  button.logout-button:hover {
+    background-color: #c82333; /* Cambia el color de fondo al pasar el mouse */
   }
   
   span {
