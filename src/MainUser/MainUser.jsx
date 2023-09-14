@@ -22,44 +22,40 @@ class Producto extends Component {
 
     handleAlquiler = () => {
         if (this.props.isAuthenticated) {
-          // Verifica si el usuario está autenticado
-          if (this.state.cantidadDisponible > 0) {
-            this.toggleModal(); // Abre el modal
-          }
+            if (this.state.cantidadDisponible > 0) {
+                this.toggleModal();
+            }
         } else {
-          // Si el usuario no está autenticado, puedes mostrar un mensaje o redirigirlo a la página de inicio de sesión.
-          alert('Debes iniciar sesión para alquilar este producto.');
-          // O puedes redirigir al usuario a la página de inicio de sesión, si tienes una ruta definida para ella.
-          // Ejemplo usando react-router-dom:
-          // this.props.history.push('/login');
+            alert('Debes iniciar sesión para alquilar este producto.');
         }
-      };
-      
+    };
 
     confirmAlquiler = () => {
-        // Envía los datos al servidor
-        axios
-            .post('/api/registrar-alquiler', {
-                fechaAlquiler: this.state.fechaAlquiler,
-                fechaEntrega: this.state.fechaEntrega,
-                productoId: this.props._id,
-            })
-            .then((response) => {
-                // Actualiza el estado o realiza cualquier otra acción necesaria
-                console.log('Alquiler registrado con éxito');
-            })
-            .catch((error) => {
-                console.error('Error al registrar el alquiler', error);
-            });
+        const fechaAlquiler = new Date();
+        const fechaEntrega = new Date(fechaAlquiler.getTime() + 2 * 24 * 60 * 60 * 1000);
+ const { _id: mangaId } = this.props;
 
-        // Cierra el modal y reinicia las fechas
-        this.toggleModal();
-        this.setState({
-            fechaAlquiler: null,
-            fechaEntrega: null,
-            cantidadDisponible: this.state.cantidadDisponible - 1,
-        });
-    };
+ axios.post('/api/usuarios/registrar-alquiler', {
+     userId: '6501128101eedc6ec8627796', // Reemplaza con el ID del usuario actual
+     fechaAlquiler, 
+     fechaEntrega,
+     manga: mangaId,
+ 
+ })
+ .then((response) => {
+     // Maneja la respuesta del servidor y actualiza la interfaz de usuario según sea necesario
+     console.log('Alquiler registrado con éxito', response.data);
+     // Actualiza la interfaz de usuario para reflejar el alquiler
+     this.setState({
+         cantidadDisponible: this.state.cantidadDisponible - 1,
+         modalVisible: false,
+     });
+ })
+ .catch((error) => {
+     console.error('Error al registrar el alquiler', error);
+     // Maneja los errores adecuadamente
+ });
+};
 
     render() {
         const { title, descripcion, image, precio } = this.props;
@@ -77,7 +73,6 @@ class Producto extends Component {
                 {fechaEntrega && <p>Fecha de Entrega: {fechaEntrega.toDateString()}</p>}
                 <button onClick={this.handleAlquiler}>Alquilar</button>
 
-                {/* Modal */}
                 {this.state.modalVisible && (
                     <AlquilerModal
                         modalVisible={this.state.modalVisible}
@@ -118,9 +113,9 @@ class MainUser extends Component {
             <div>
                 <h1 className='titulo'>Alquiler de Productos</h1>
                 <div className="productos-container">
-                {productos.map((producto) => (
-  <Producto key={producto._id} {...producto} isAuthenticated={this.props.isAuthenticated} />
-))}
+                    {productos.map((producto) => (
+                        <Producto key={producto._id} {...producto} isAuthenticated={this.props.isAuthenticated} />
+                    ))}
                 </div>
             </div>
         );
